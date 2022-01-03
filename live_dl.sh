@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Serves to auto dl Twitch Livestreams
-# Script requires cronjob to start it & yt-dlp
+# Script requires cronjob to start it (I have it running @ 20:00) & yt-dlp
 # Probably messy but does the job :)
 # Made by FappyMcFap January 03 2022
 
