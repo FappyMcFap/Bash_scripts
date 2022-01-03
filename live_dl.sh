@@ -1,11 +1,11 @@
 #!/bin/bash
 
-
+# Serves to auto dl Twitch Livestreams
 # Script requires cronjob to start it. It will auto end
 # Probably messy but does the job :)
 # Made by FappyMcFap January 03 2022
 
-# Specify the time you'd like script to end at line 30
+# Specify the time you'd like script to end at line 32
 # Configure variables: streamer & path
 
 curdate=$(date +"%Y-%m-%d")
