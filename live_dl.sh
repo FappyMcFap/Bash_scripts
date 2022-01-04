@@ -5,7 +5,7 @@
 # Probably messy but does the job :)
 # Made by FappyMcFap January 03 2022
 
-# Specify the time you'd like script to end at line 32
+# Specify the time you'd like script to end at line 33
 # Configure variables: streamer & path
 
 curdate=$(date +"%Y-%m-%d")
