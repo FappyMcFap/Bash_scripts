@@ -18,6 +18,7 @@ path="/path/to/$streamer/Live"
 yt-dlp -o ''$path'/%(title)s-%(id)s_%(upload_date)s.%(ext)s' --hls-use-mpegts $link 2>&1 | tee "$path/$curdate.log"
 
 # Not pretty but uses grep to detect yt-dlp's error message that contains 'offline'
+# Tries again after 2m if stream is offline
 while cat $path/$curdate.log | grep -i 'offline'; do
 
 	# Sleep for 2m before retrying..
