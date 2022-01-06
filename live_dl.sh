@@ -26,8 +26,6 @@ while cat $path/$curdate.log | grep -i 'offline'; do
 	# Update the current time
 	currentime=$(date +%H:%M)
 	yt-dlp -o ''$path'/%(title)s-%(id)s_%(upload_date)s.%(ext)s' --hls-use-mpegts $link 2>&1 | tee "$path/$curdate.log"
-	# Remove the log file once we don't need it anymore
-	rm "$path/$curdate.log"
 
 	# End script if time is passed 21:00
 	if [[ "$currentime" = "21:00" ]]; then
