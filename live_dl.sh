@@ -5,7 +5,7 @@
 # Probably messy but does the job :)
 # Made by FappyMcFap January 03 2022
 
-# Specify the time you'd like script to end at line 33
+# Specify the time you'd like script to end at line 35
 # Configure variables: streamer & path
 
 curdate=$(date +"%Y-%m-%d")
@@ -14,6 +14,10 @@ streamer="shroud"
 link="https://www.twitch.tv/$streamer"
 path="/path/to/$streamer/Live"
 
+# Create folders if they don't exist
+if [ ! -d $path ]; then
+	mkdir -p $path
+fi
 
 yt-dlp -o ''$path'/%(title)s-%(id)s_%(upload_date)s.%(ext)s' --hls-use-mpegts $link 2>&1 | tee "$path/$curdate.log"
 
@@ -24,11 +28,11 @@ while cat $path/$curdate.log | grep -i 'offline'; do
 	# Sleep for 2m before retrying..
 	sleep 2m
 	# Update the current time
-	currentime=$(date +%H:%M)
+	curtime=$(date +%H:%M)
 	yt-dlp -o ''$path'/%(title)s-%(id)s_%(upload_date)s.%(ext)s' --hls-use-mpegts $link 2>&1 | tee "$path/$curdate.log"
 
 	# End script if time is passed 21:00
-	if [[ "$currentime" = "21:00" ]]; then
+	if [[ "$curtime" = "21:00" ]]; then
 		break
 	fi
 
