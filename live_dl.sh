@@ -19,7 +19,7 @@ if [ ! -d $path ]; then
 	mkdir -p $path
 fi
 
-yt-dlp -o ''$path'/%(title)s-%(id)s_%(upload_date)s.%(ext)s' --hls-use-mpegts $link 2>&1 | tee "$path/$curdate.log"
+/usr/local/bin/yt-dlp -o ''$path'/%(description)s-%(id)s_%(upload_date)s.%(ext)s' --hls-use-mpegts $link 2>&1 | tee "$path/$curdate.log"
 
 # Not pretty but uses grep to detect yt-dlp's error message that contains 'offline'
 # Tries again after 2m if stream is offline
@@ -29,7 +29,7 @@ while cat $path/$curdate.log | grep -i 'offline'; do
 	sleep 2m
 	# Update the current time
 	curtime=$(date +%H:%M)
-	yt-dlp -o ''$path'/%(title)s-%(id)s_%(upload_date)s.%(ext)s' --hls-use-mpegts $link 2>&1 | tee "$path/$curdate.log"
+	/usr/local/bin/yt-dlp -o ''$path'/%(description)s-%(id)s_%(upload_date)s.%(ext)s' --hls-use-mpegts $link 2>&1 | tee "$path/$curdate.log"
 
 	# End script if time is passed 21:00
 	if [[ "$curtime" = "21:00" ]]; then
